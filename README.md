@@ -187,3 +187,30 @@ void kirim_thingspeak(float discm, int ledStatus) {
   }
 }
 ```
+## 7. Cara Upload Program
+1. Hubungkan **ESP32** ke laptop dengan kabel USB.  
+2. Buka **Arduino IDE**, lalu salin kode program.  
+3. Pilih **Tools > Board > ESP32 Dev Module**.  
+4. Pilih **Port** sesuai ESP32 yang terhubung.  
+5. Klik tombol **Upload** (ikon panah kanan).  
+6. Setelah selesai, buka **Serial Monitor** dengan baud rate **115200** untuk melihat hasil.  
+
+
+
+## 8. Hasil Pengujian
+- Saat objek terdeteksi **< 10 cm**, LED indikator **menyala**.  
+- Data **distance (cm)** dan **status LED** terkirim ke **ThingSpeak** setiap ±20 detik.  
+- Grafik hasil pengukuran dapat dilihat pada **Channel ID 3095474** di akun ThingSpeak.  
+
+
+
+## 9. Kesimpulan
+1. Sistem berhasil membaca jarak menggunakan **sensor ultrasonik HC-SR04**.  
+2. LED indikator menyala jika jarak **< 10 cm**.  
+3. Data jarak dan status LED berhasil terkirim ke **ThingSpeak** melalui **ESP32 dan WiFi**.
+
+
+## 10. Hasil
+
+
+
