@@ -25,7 +25,8 @@ ThingSpeak digunakan sebagai IoT cloud untuk menyimpan data secara real-time dan
 - LED + resistor 220Ω  
 - Breadboard dan kabel jumper  
 - WiFi dengan akses internet  
-- Laptop/PC dengan **Arduino IDE**  
+- Laptop/PC dengan **Arduino IDE**
+- Akun ThingSpeak
 
 ---
 
@@ -195,22 +196,35 @@ void kirim_thingspeak(float discm, int ledStatus) {
 5. Klik tombol **Upload** (ikon panah kanan).  
 6. Setelah selesai, buka **Serial Monitor** dengan baud rate **115200** untuk melihat hasil.  
 
-
-
 ## 8. Hasil Pengujian
-- Saat objek terdeteksi **< 10 cm**, LED indikator **menyala**.  
-- Data **distance (cm)** dan **status LED** terkirim ke **ThingSpeak** setiap ±20 detik.  
-- Grafik hasil pengukuran dapat dilihat pada **Channel ID 3095474** di akun ThingSpeak.  
+#### a. Serial Monitor
+ESP32 berhasil membaca jarak dari sensor ultrasonik. Saat objek didekatkan <10 cm, LED menyala dan status LED ditampilkan 1. 
+Saat objek menjauh >10 cm, LED mati dengan status 0.
 
+- Contoh output serial monitor:
+```
+Distance (cm): 7.02
+LED Status: 1
+closing connection
+--------------------
+Distance (cm): 15.33
+LED Status: 0
+closing connection
+--------------------
+```
+#### b. ThingSpeak Dashboard
+Data berhasil terkirim ke ThingSpeak dengan interval update setiap 20 detik.
 
+- Field 1 (Sensor Jarak) menampilkan grafik perubahan jarak (dalam inci).  
+<img width="475" height="332" alt="image" src="https://github.com/user-attachments/assets/197d873e-3e4a-4b6b-ae80-63d132948cad" />
+
+- Field 2 (LED Status) menampilkan status LED (nilai 1 = ON, 0 = OFF).
+<img width="475" height="325" alt="image" src="https://github.com/user-attachments/assets/75b007e0-4cc3-4d52-8d49-cd25cde65db3" />
 
 ## 9. Kesimpulan
-1. Sistem berhasil membaca jarak menggunakan **sensor ultrasonik HC-SR04**.  
-2. LED indikator menyala jika jarak **< 10 cm**.  
-3. Data jarak dan status LED berhasil terkirim ke **ThingSpeak** melalui **ESP32 dan WiFi**.
-
-
-## 10. Hasil
+1. Sensor ultrasonik berhasil membaca jarak objek secara real-time.
+2. LED berhasil dikontrol otomatis: menyala jika objek <10 cm, mati jika objek menjauh.
+3. Data jarak dan status LED berhasil dikirim dan divisualisasikan di ThingSpeak dalam bentuk grafik.
 
 
 
